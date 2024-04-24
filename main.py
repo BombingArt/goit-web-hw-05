@@ -25,7 +25,7 @@ async def fetch_currency_rates(days):
 
 async def main(days):
     currency_rates = await fetch_currency_rates(days)
-    print(json.dumps(currency_rates, indent=2))
+    print('\nВідповідь:\n\n' + json.dumps(currency_rates, indent=2))
 
 
 if __name__ == "__main__":
@@ -34,6 +34,7 @@ if __name__ == "__main__":
         if days > 10:
             print("Кількість днів не може перевищувати 10")
             sys.exit(1)
+        print("Опрацювання...")
         asyncio.run(main(days))
     except (IndexError, ValueError):
         print("Використання: python main.py <кількість днів>")
